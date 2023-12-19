@@ -1,0 +1,113 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>{{ user.name }}'s Watchlist</title>-->
+<!--    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">-->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">-->
+<!--</head>-->
+<!--<body>-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>电影信息</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+
+    <link rel="stylesheet" href="static/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/assets/css/template-style.css">
+    <link href="static/assets/img/favicon.png" rel="icon">
+    <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="static/assets/css/style.css" rel="stylesheet">
+    <style>
+        .container ul li{
+            color: #ffffff;
+        }
+        .container ul li p {
+            color: #9eccf4;
+            font-size: 17px;
+            margin-top: auto;
+        }
+        .container ul li .question {
+            font-size: 19px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body id="reportsPage">
+    <div class="" id="home">
+{#        --------------------导航栏---------------------#}
+         <nav class="navbar navbar-expand-xl">
+            <div class="container h-100">
+                <a class="navbar-brand" href="#">
+                    <h1 class="tm-site-title mb-0">电影管理系统</h1>
+                </a>
+                <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars tm-nav-icon"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto h-100">
+                        <li class="nav-item">
+                            <a class="nav-link " href="index">
+                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                电影信息
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="movies">
+                                <i class="fa fa-film" aria-hidden="true"></i>
+                                演员信息
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="tj">
+                                <i class="fa fa-film" aria-hidden="true"></i>
+                                统计
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+
+<!--   <h2>-->
+<!--      <img alt="Avatar" class="avatar" src="{{ url_for('static', filename='images/avatar.JPEG') }}">-->
+<!--      {{ user.name }}'s Watchlist-->
+<!--   </h2>-->
+   <ul class="movie-list">
+      <li>
+          Page Not Found - 404
+      <span class="float-right">
+          <a href="{{ url_for('index') }}">Go Back</a>
+      </span>
+      </li>
+   </ul>
+   <footer>
+      <small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
+   </footer>
+
+ </div>
+
+    <script src="static/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="static/assets/js/moment.min.js"></script>
+    <script src="static/assets/js/Chart.min.js"></script>
+    <script src="static/assets/js/bootstrap.min.js"></script>
+    <script src="static/assets/js/tooplate-scripts.js"></script>
+
+</body>
+</html>
