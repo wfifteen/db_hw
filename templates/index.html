@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>电影信息</title>
+    <title>电影管理系统</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
 
     <link rel="stylesheet" href="static/assets/css/fontawesome.min.css">
@@ -35,13 +35,72 @@
     </style>
 </head>
 
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>电影top250</title>-->
+<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/bootstrap.min.css") }}">-->
+<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/bootstrap.min.css") }}">-->
+<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/template-style.css") }}">-->
+<!--    <link href="{{ url_for("static",filename="static/assets/img/favicon.png") }}" rel="icon">-->
+<!--    <link href="{{ url_for("static",filename="assets/img/apple-touch-icon.png") }}" rel="apple-touch-icon">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/icofont/icofont.min.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/boxicons/css/boxicons.min.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/animate.css/animate.min.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/venobox/venobox.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/aos/aos.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/css/style.css") }}" rel="stylesheet">-->
+
+<!--</head>-->
+<!--<style>-->
+<!--    .wl-Page{-->
+<!--    width: 100%;-->
+<!--}-->
+<!--.wl-pagination{-->
+<!--    display: inline-block;-->
+<!--    margin: 0 -15px;-->
+<!--}-->
+<!--.wl-pagination>li>a{-->
+<!--    display: inline-block;-->
+<!--    padding: 15px;-->
+<!--    border:1px solid #ccc;-->
+<!--    text-decoration: none;-->
+<!--    color: rgb(63, 57, 57);-->
+<!--}-->
+<!--.wl-pagination>li{-->
+<!--    display: inline-block;-->
+<!--    /* float: left; */-->
+<!--    list-style: none;-->
+<!--}-->
+
+<!--.wl-pagination-bgc>li>a{-->
+<!--    background-color: #f4f4f5;-->
+<!--    color: #303133;-->
+<!--    font-size: 12px;-->
+<!--    padding: 8px;-->
+<!--    border: 1px solid #f4f4f5;-->
+<!--    font-weight: 900;-->
+<!--}-->
+<!--.wl-pagination-bgc .active>a{-->
+<!--    background-color: rgb(0, 153, 255);-->
+<!--    color: #fff;-->
+<!--}-->
+<!--.wl-pagination-bgc>li>a:hover{-->
+<!--    background-color: rgb(0, 153, 255);-->
+<!--    color: #fff;-->
+<!--}-->
+<!--</style>-->
 <body id="reportsPage">
     <div class="" id="home">
 {#        --------------------导航栏---------------------#}
          <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
                 <a class="navbar-brand" href="#">
-                    <h1 class="tm-site-title mb-0">电影管理系统</h1>
+                    <h1 class="tm-site-title mb-0">❥(^_-)电影管理系统 (-_^)❥</h1>
                 </a>
                 <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,13 +110,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link " href="index">
+                            <a class="nav-link " href="mv">
                                 <i class="fa fa-tags" aria-hidden="true"></i>
                                 电影信息
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="movies">
+                            <a class="nav-link " href="ac">
                                 <i class="fa fa-film" aria-hidden="true"></i>
                                 演员信息
                             </a>
@@ -68,19 +127,60 @@
                                 统计
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="index1">
+                                <i class="fa fa-film" aria-hidden="true"></i>
+                                票房
+                            </a>
+                        </li>
                     </ul>
 
                 </div>
             </div>
         </nav>
 
- {# 使用 length 过滤器获取 movies 变量的长度 #}
-   <p>{{ movies|length }} Titles</p>
-   <ul class="movie-list">
-      {% for movie in movies %} {# 迭代 movies 变量 #}
-      <li>{{ movie.title }} - {{ movie.year }}</li> {# 等同于movie['title'] #}
-      {% endfor %} {# 使用 endfor 标签结束 for 语句 #}
-   </ul>
+<!-- {# 使用 length 过滤器获取 movies 变量的长度 #}-->
+<!--   <p>{{ movies|length }} Titles</p>-->
+<!--   <ul class="movie-list">-->
+<!--      {% for movie in movies %} {# 迭代 movies 变量 #}-->
+<!--      <li>{{ movie.title }} - {{ movie.year }}</li> {# 等同于movie['title'] #}-->
+<!--      {% endfor %} {# 使用 endfor 标签结束 for 语句 #}-->
+<!--   </ul>-->
+  {# --------------------容器1--------------------#}
+        <div class="container">
+{#            -------------左上角标语-----------#}
+            <div class="row">
+                <div class="col">
+                    <h3 class="section-title">电影信息</h3>
+                </div>
+            </div>
+          <section class="counts section-bg">
+                 <div class="container">
+                     <table class="table table-striped">
+                         <tr>
+                             <td style="width: 10%;">电影序号</td>
+                             <td style="width: 10%;">电影名称</td>
+                             <td style="width: 10%;">首映时间</td>
+                             <td style="width: 10%;">电影国家</td>
+                             <td style="width: 10%;">电影类别</td>
+                             <td style="width: 10%;">上映年份</td>
+                         </tr>
+                         {% for movie in movie_info %}
+                             <tr>
+                                 <td>{{ movie[0] }}</td>
+                                 <td>{{ movie[1] }}</td>
+                                 <td>{{ movie[2] }}</td>
+                                 <td>{{ movie[3] }}</td>
+                                 <td>{{ movie[4] }}</td>
+                                 <td>{{ movie[5] }}</td>
+<!--                                 <td>{{ movie[6] }}</td>-->
+<!--                                 <td>{{ movie[7] }}</td>-->
+                             </tr>
+                         {% endfor %}
+                     </table>
+                 </div>
+          </section>
+       </div>
 <!--   <img alt="Walking Totoro" class= totoro src="{{ url_for('static', filename='images/totoro.jpg') }}">-->
    <footer>
       <small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
@@ -148,14 +248,13 @@
 <!--  </footer>&lt;!&ndash; End Footer &ndash;&gt;-->
 
 
-    </div>
 
 <!--    <script src="static/assets/js/jquery-3.3.1.min.js"></script>-->
 <!--    <script src="static/assets/js/moment.min.js"></script>-->
 <!--    <script src="static/assets/js/Chart.min.js"></script>-->
 <!--    <script src="static/assets/js/bootstrap.min.js"></script>-->
 <!--    <script src="static/assets/js/tooplate-scripts.js"></script>-->
-
+    </div>
 </body>
 
 </html>

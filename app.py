@@ -1,22 +1,23 @@
 import os
 import sys
+import pyodbc
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-
-name = 'Grey Li'
-
-movies = [
-{'title': 'My Neighbor Totoro', 'year': '1988'},
-{'title': 'Dead Poets Society', 'year': '1989'},
-{'title': 'A Perfect World', 'year': '1993'},
-{'title': 'Leon', 'year': '1994'},
-{'title': 'Mahjong', 'year': '1996'},
-{'title': 'Swallowtail Butterfly', 'year': '1996'},
-{'title': 'King of Comedy', 'year': '1999'},
-{'title': 'Devils on the Doorstep', 'year': '1999'},
-{'title': 'WALL-E', 'year': '2008'},
-{'title': 'The Pork of Music', 'year': '2012'},
-]
+#
+# name = 'Grey Li'
+#
+# movies = [
+# {'title': 'My Neighbor Totoro', 'year': '1988'},
+# {'title': 'Dead Poets Society', 'year': '1989'},
+# {'title': 'A Perfect World', 'year': '1993'},
+# {'title': 'Leon', 'year': '1994'},
+# {'title': 'Mahjong', 'year': '1996'},
+# {'title': 'Swallowtail Butterfly', 'year': '1996'},
+# {'title': 'King of Comedy', 'year': '1999'},
+# {'title': 'Devils on the Doorstep', 'year': '1999'},
+# {'title': 'WALL-E', 'year': '2008'},
+# {'title': 'The Pork of Music', 'year': '2012'},
+# ]
 
 
 WIN = sys.platform.startswith('win')
@@ -31,14 +32,57 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # 关闭对模型修改的�
 # 在扩展类实例化前加载配置
 db = SQLAlchemy(app)
 
+
 @app.errorhandler(404) # 传入要处理的错误代码
 def page_not_found(e): # 接受异常对象作为参数
   # user = User.query.first()
   user=('A','B','C','D')
   return render_template('404.html', user=user), 404 # 返回模板和状态码
-@app.route('/')
+@app.route('/index')
 def index():
-  return render_template('index.html', name=name, movies=movies)
+    # 连接到SQL Server数据库
+    mconn = pyodbc.connect('DRIVER={SQL Server};SERVER=LAPTOP-CAQ82VO6;DATABASE=movieDB')
+    # 创建游标对象
+    mcursor = mconn.cursor()
+    # 执行SQL查询语句
+    msql = "SELECT * FROM movie_info"
+    mcursor.execute(msql)
+    # 获取查询结果
+    mdata = mcursor.fetchall()
+    mdatalist = []
+    for item in mdata:
+      mdatalist.append(item)
+
+    # sql1="SELECT count(*) FROM movie_info"
+    # cursor.execute(sql1)
+    # total = cursor.fetchall()
+    mcursor.close()
+    mconn.close()
+    return render_template('index.html',movie_info=mdatalist)
+ #page=page,countnum=int(int(total[0])/15)#
+
+@app.route('/ac')
+def ac():
+    # 连接到SQL Server数据库
+    aconn = pyodbc.connect('DRIVER={SQL Server};SERVER=LAPTOP-CAQ82VO6;DATABASE=movieDB')
+    # 创建游标对象
+    acursor = aconn.cursor()
+    # 执行SQL查询语句
+    asql = "SELECT * FROM actor_info"
+    acursor.execute(asql)
+    # 获取查询结果
+    adata = acursor.fetchall()
+    adatalist = []
+    for item in adata:
+      adatalist.append(item)
+
+    # sql1="SELECT count(*) FROM movie_info"
+    # cursor.execute(sql1)
+    # total = cursor.fetchall()
+    acursor.close()
+    aconn.close()
+    return render_template('ac.html',actor_info=adatalist)
+ #page=page,countnum=int(int(total[0])/15)#
 
 app.run()
 
