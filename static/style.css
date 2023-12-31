@@ -35,3 +35,9 @@ border-bottom:none;
 .movie-list li:hover {
 background-color: #f8f9fa;
 }
+/*图片居中*/
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

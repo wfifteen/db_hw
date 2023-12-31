@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>电影管理系统</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
 
     <link rel="stylesheet" href="static/assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
@@ -34,73 +33,13 @@
         }
     </style>
 </head>
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
-<!--    <title>电影top250</title>-->
-<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/bootstrap.min.css") }}">-->
-<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/bootstrap.min.css") }}">-->
-<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/template-style.css") }}">-->
-<!--    <link href="{{ url_for("static",filename="static/assets/img/favicon.png") }}" rel="icon">-->
-<!--    <link href="{{ url_for("static",filename="assets/img/apple-touch-icon.png") }}" rel="apple-touch-icon">-->
-<!--    <link href="{{ url_for("static",filename="assets/vendor/icofont/icofont.min.css") }}" rel="stylesheet">-->
-<!--    <link href="{{ url_for("static",filename="assets/vendor/boxicons/css/boxicons.min.css") }}" rel="stylesheet">-->
-<!--    <link href="{{ url_for("static",filename="assets/vendor/animate.css/animate.min.css") }}" rel="stylesheet">-->
-<!--    <link href="{{ url_for("static",filename="assets/vendor/venobox/venobox.css") }}" rel="stylesheet">-->
-<!--    <link href="{{ url_for("static",filename="assets/vendor/aos/aos.css") }}" rel="stylesheet">-->
-<!--    <link href="{{ url_for("static",filename="assets/css/style.css") }}" rel="stylesheet">-->
-
-<!--</head>-->
-<!--<style>-->
-<!--    .wl-Page{-->
-<!--    width: 100%;-->
-<!--}-->
-<!--.wl-pagination{-->
-<!--    display: inline-block;-->
-<!--    margin: 0 -15px;-->
-<!--}-->
-<!--.wl-pagination>li>a{-->
-<!--    display: inline-block;-->
-<!--    padding: 15px;-->
-<!--    border:1px solid #ccc;-->
-<!--    text-decoration: none;-->
-<!--    color: rgb(63, 57, 57);-->
-<!--}-->
-<!--.wl-pagination>li{-->
-<!--    display: inline-block;-->
-<!--    /* float: left; */-->
-<!--    list-style: none;-->
-<!--}-->
-
-<!--.wl-pagination-bgc>li>a{-->
-<!--    background-color: #f4f4f5;-->
-<!--    color: #303133;-->
-<!--    font-size: 12px;-->
-<!--    padding: 8px;-->
-<!--    border: 1px solid #f4f4f5;-->
-<!--    font-weight: 900;-->
-<!--}-->
-<!--.wl-pagination-bgc .active>a{-->
-<!--    background-color: rgb(0, 153, 255);-->
-<!--    color: #fff;-->
-<!--}-->
-<!--.wl-pagination-bgc>li>a:hover{-->
-<!--    background-color: rgb(0, 153, 255);-->
-<!--    color: #fff;-->
-<!--}-->
-<!--</style>-->
 <body id="reportsPage">
     <div class="" id="home">
 {#        --------------------导航栏---------------------#}
          <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
                 <a class="navbar-brand" href="#">
-                    <h1 class="tm-site-title mb-0">❥(^_-)电影管理系统 (-_^)❥</h1>
+                    <h1 class="tm-site-title mb-0">电影管理系统</h1>
                 </a>
                 <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,6 +48,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
+                        <li class="nav-item">
+                            <a class="nav-link " href="index">
+                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                首页
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link " href="mv">
                                 <i class="fa fa-tags" aria-hidden="true"></i>
@@ -124,13 +69,7 @@
                         <li class="nav-item">
                             <a class="nav-link " href="tj">
                                 <i class="fa fa-film" aria-hidden="true"></i>
-                                统计
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="index1">
-                                <i class="fa fa-film" aria-hidden="true"></i>
-                                票房
+                                票房分析
                             </a>
                         </li>
                     </ul>
@@ -139,122 +78,69 @@
             </div>
         </nav>
 
-<!-- {# 使用 length 过滤器获取 movies 变量的长度 #}-->
-<!--   <p>{{ movies|length }} Titles</p>-->
-<!--   <ul class="movie-list">-->
-<!--      {% for movie in movies %} {# 迭代 movies 变量 #}-->
-<!--      <li>{{ movie.title }} - {{ movie.year }}</li> {# 等同于movie['title'] #}-->
-<!--      {% endfor %} {# 使用 endfor 标签结束 for 语句 #}-->
-<!--   </ul>-->
-  {# --------------------容器1--------------------#}
+<!--  {# &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;容器1&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;#}-->
+<!--        <div class="container">-->
+<!--{#            -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;左上角标语-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;#}-->
+<!--            <div class="row">-->
+<!--                <div class="col">-->
+<!--                    <h2 class="section-title">关于我们</h2>-->
+<!--                    这是一个系统-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="image-container">-->
+<!--                 <img alt="movie poster" class= movie poster src="{{ url_for('static', filename='images/movie poster.jpg') }}">-->
+<!--            </div>-->
+<!--&lt;!&ndash;            <img alt="Walking Totoro" class= totoro src="{{ url_for('static', filename='images/totoro.jpg') }}">&ndash;&gt;-->
+<!--       </div>-->
+
+
+{#        --------------------容器1--------------------#}
         <div class="container">
-{#            -------------左上角标语-----------#}
             <div class="row">
                 <div class="col">
-                    <h3 class="section-title">电影信息</h3>
+                    <h3 class="section-title">关于系统</h3>
                 </div>
             </div>
-          <section class="counts section-bg">
-                 <div class="container">
-                     <table class="table table-striped">
-                         <tr>
-                             <td style="width: 10%;">电影序号</td>
-                             <td style="width: 10%;">电影名称</td>
-                             <td style="width: 10%;">首映时间</td>
-                             <td style="width: 10%;">电影国家</td>
-                             <td style="width: 10%;">电影类别</td>
-                             <td style="width: 10%;">上映年份</td>
-                         </tr>
-                         {% for movie in movie_info %}
-                             <tr>
-                                 <td>{{ movie[0] }}</td>
-                                 <td>{{ movie[1] }}</td>
-                                 <td>{{ movie[2] }}</td>
-                                 <td>{{ movie[3] }}</td>
-                                 <td>{{ movie[4] }}</td>
-                                 <td>{{ movie[5] }}</td>
-<!--                                 <td>{{ movie[6] }}</td>-->
-<!--                                 <td>{{ movie[7] }}</td>-->
-                             </tr>
-                         {% endfor %}
-                     </table>
+{#          -----------------容器2-------------#}
+             <section class="counts section-bg">
+                 <div class="image-container">
+                     <img alt="movie poster1" class= movie poster1 src="{{ url_for('static', filename='images/movie poster3.jpg') }}">
                  </div>
-          </section>
-       </div>
-<!--   <img alt="Walking Totoro" class= totoro src="{{ url_for('static', filename='images/totoro.jpg') }}">-->
-   <footer>
+                 <div class="container">
+                    <ul>
+                         <br>
+                        <li>
+                            <p class="question ">这是一个什么样的系统？</p>
+                            <p>&emsp;&emsp;本系统致力于让用户简单明了地查看到电影信息与演员信息，同时，
+                            用户可以了解到历年电影走势、电影类型分布等相关信息，方便用户根据其信息选择电影。</p>
+                        </li>
+                        <br>
+                        <hr />
+                        <li>
+                            <p class="question ">如何使用本系统？</p>
+                            <p>1.你可以通过点击菜单“电影信息”查看电影信息，并可点击电影名称在IMDb中实现搜索，查看电影详细信息；<br>
+                            2.你可以通过点击菜单“演员信息”查看演员信息，并可点击演员姓名在百度百科中实现搜索，查看演员详细介绍；<br>
+                            3.该系统开源共享，你可以登录该系统，并通过增、删、改操作不断完善该系统信息；<br>
+                            4.你可以通过点击菜单“票房分析”查看相关电影票房走向与趋势；<br>
+                            </p>
+                        </li><br><hr />
+                        <li>
+                            <p class="question ">温馨提示:</p>
+                            <p>1.此分析并不能衡量电影的艺术价值和质量；<br>
+                            2.本系统仅作客观评价，无主观影响电影与演员的名气与票房；<br>
+                            3.本系统研究的数据有限，不一定能满足所有用户的需求；<br>
+                            4.本系统研究的数据以及分析结果仅供参考。</p>
+                        </li><br><hr />
+                    </ul>
+                </div>
+             </section>
+             </div>
+  <footer>
       <small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
-   </footer>
-
-<!--  <footer id="footer">-->
-<!--    <div class="footer-top">-->
-<!--      <div class="container">-->
-<!--        <div class="row">-->
-
-<!--          <div class="col-lg-3 col-md-6 footer-info">-->
-<!--            <h3>爬虫技术</h3>-->
-<!--            <p>-->
-<!--              xxxxxx <br>-->
-<!--              xxxxxx<br><br>-->
-<!--              <strong>电话：</strong> +182xxxxxxxx<br>-->
-<!--              <strong>邮箱：</strong> 236xxxxxxxx@qq.com<br>-->
-<!--            </p>-->
-<!--            <div class="social-links mt-3">-->
-<!--              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>-->
-<!--              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>-->
-<!--              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>-->
-<!--              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>-->
-<!--              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="col-lg-2 col-md-6 footer-links">-->
-<!--            <h4>快速了解我们</h4>-->
-<!--            <ul>-->
-<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">关于我们</a></li>-->
-<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">服务</a></li>-->
-<!--              <li><i class="bx bx-chevron-right"></i> <a href="index">首页</a></li>-->
-<!--            </ul>-->
-<!--          </div>-->
-
-<!--          <div class="col-lg-3 col-md-6 footer-links">-->
-<!--            <h4>服务</h4>-->
-<!--            <ul>-->
-<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影top250</a></li>-->
-<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影评分</a></li>-->
-<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影短评</a></li>-->
-<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影热评</a></li>-->
-<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影统计图</a></li>-->
-<!--            </ul>-->
-<!--          </div>-->
-
-<!--          <div class="col-lg-4 col-md-6 footer-newsletter">-->
-<!--            <h4>关注我们</h4>-->
-<!--            <p>输入你的邮箱，带你了解更多电影信息</p>-->
-<!--            <form action="" method="post">-->
-<!--              <input type="email" name="email"><input type="submit" value="订阅">-->
-<!--            </form>-->
-
-<!--          </div>-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="container">-->
-<!--      <div class="copyright">Copyright &copy;2022 xxx</div>-->
-<!--      <div class="credits"></div>-->
-<!--    </div>-->
-<!--  </footer>&lt;!&ndash; End Footer &ndash;&gt;-->
-
-
-
-<!--    <script src="static/assets/js/jquery-3.3.1.min.js"></script>-->
-<!--    <script src="static/assets/js/moment.min.js"></script>-->
-<!--    <script src="static/assets/js/Chart.min.js"></script>-->
-<!--    <script src="static/assets/js/bootstrap.min.js"></script>-->
-<!--    <script src="static/assets/js/tooplate-scripts.js"></script>-->
-    </div>
+  </footer>
+ </div>
 </body>
-
 </html>
+
+

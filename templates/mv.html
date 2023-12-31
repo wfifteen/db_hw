@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>电影管理系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+
+    <link rel="stylesheet" href="static/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/assets/css/template-style.css">
+    <link href="static/assets/img/favicon.png" rel="icon">
+    <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="static/assets/css/style.css" rel="stylesheet">
+    <style>
+        .container ul li{
+            color: #ffffff;
+        }
+        .container ul li p {
+            color: #9eccf4;
+            font-size: 17px;
+            margin-top: auto;
+        }
+        .container ul li .question {
+            font-size: 19px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>电影top250</title>-->
+<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/bootstrap.min.css") }}">-->
+<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/bootstrap.min.css") }}">-->
+<!--    <link rel="stylesheet" href="{{ url_for("static", filename="assets/css/template-style.css") }}">-->
+<!--    <link href="{{ url_for("static",filename="static/assets/img/favicon.png") }}" rel="icon">-->
+<!--    <link href="{{ url_for("static",filename="assets/img/apple-touch-icon.png") }}" rel="apple-touch-icon">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/icofont/icofont.min.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/boxicons/css/boxicons.min.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/animate.css/animate.min.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/venobox/venobox.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/vendor/aos/aos.css") }}" rel="stylesheet">-->
+<!--    <link href="{{ url_for("static",filename="assets/css/style.css") }}" rel="stylesheet">-->
+
+<!--</head>-->
+<!--<style>-->
+<!--    .wl-Page{-->
+<!--    width: 100%;-->
+<!--}-->
+<!--.wl-pagination{-->
+<!--    display: inline-block;-->
+<!--    margin: 0 -15px;-->
+<!--}-->
+<!--.wl-pagination>li>a{-->
+<!--    display: inline-block;-->
+<!--    padding: 15px;-->
+<!--    border:1px solid #ccc;-->
+<!--    text-decoration: none;-->
+<!--    color: rgb(63, 57, 57);-->
+<!--}-->
+<!--.wl-pagination>li{-->
+<!--    display: inline-block;-->
+<!--    /* float: left; */-->
+<!--    list-style: none;-->
+<!--}-->
+
+<!--.wl-pagination-bgc>li>a{-->
+<!--    background-color: #f4f4f5;-->
+<!--    color: #303133;-->
+<!--    font-size: 12px;-->
+<!--    padding: 8px;-->
+<!--    border: 1px solid #f4f4f5;-->
+<!--    font-weight: 900;-->
+<!--}-->
+<!--.wl-pagination-bgc .active>a{-->
+<!--    background-color: rgb(0, 153, 255);-->
+<!--    color: #fff;-->
+<!--}-->
+<!--.wl-pagination-bgc>li>a:hover{-->
+<!--    background-color: rgb(0, 153, 255);-->
+<!--    color: #fff;-->
+<!--}-->
+<!--</style>-->
+<body id="reportsPage">
+    <div class="" id="home">
+{#        --------------------导航栏---------------------#}
+         <nav class="navbar navbar-expand-xl">
+            <div class="container h-100">
+                <a class="navbar-brand" href="#">
+                    <h1 class="tm-site-title mb-0">电影管理系统</h1>
+                </a>
+                <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars tm-nav-icon"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto h-100">
+                        <li class="nav-item">
+                            <a class="nav-link " href="index">
+                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                首页
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="mv">
+                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                电影信息
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="ac">
+                                <i class="fa fa-film" aria-hidden="true"></i>
+                                演员信息
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="tj">
+                                <i class="fa fa-film" aria-hidden="true"></i>
+                                票房分析
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+<!-- {# 使用 length 过滤器获取 movies 变量的长度 #}-->
+<!--   <p>{{ movies|length }} Titles</p>-->
+<!--   <ul class="movie-list">-->
+<!--      {% for movie in movies %} {# 迭代 movies 变量 #}-->
+<!--      <li>{{ movie.title }} - {{ movie.year }}</li> {# 等同于movie['title'] #}-->
+<!--      {% endfor %} {# 使用 endfor 标签结束 for 语句 #}-->
+<!--   </ul>-->
+  {# --------------------容器1--------------------#}
+        <div class="container">
+{#            -------------左上角标语-----------#}
+            <div class="row">
+                <div class="col">
+                    <h3 class="section-title">电影信息</h3>
+                </div>
+            </div>
+
+            <p>{{ movie_info|length }} 条记录</p>
+            <form method="post">
+                <div class="inputText">
+                    序号 <input type="text" name="movie_id" autocomplete="off"  required>
+                    名称 <input type="text" name="movie_name" autocomplete="off"  required>
+                    首映时间 <input type="datetime-local" name="release_date" autocomplete="off" required>
+                    国家 <input type="text" name="country" autocomplete="off"  required><br>
+                    类别 <input type="text" name="type" autocomplete="off"  required>
+                    上映年份 <input type="number" name="year" autocomplete="off"  required>
+                    票房 <input type="number" name="box" autocomplete="off"  required>
+                    <input class="btn" type="submit" name="submit" value="添加">
+                </div>
+            </form>
+
+          <section class="counts section-bg">
+                 <div class="container">
+                     <table class="table table-striped">
+                         <tr>
+                             <td style="width: 10%;">序号</td>
+                             <td style="width: 10%;">名称</td>
+                             <td style="width: 10%;">首映时间</td>
+                             <td style="width: 10%;">国家</td>
+                             <td style="width: 10%;">类别</td>
+                             <td style="width: 10%;">上映年份</td>
+                             <td style="width: 10%;">票房</td>
+                             <td style="width: 10%;">操作</td>
+                         </tr>
+                         {% for movie in movie_info %}
+                             <tr>
+                                 <td>{{ movie[0] }}</td>
+                                 <td><span class="float-right">
+                                 <a class="imdb" href="https://www.imdb.com/find?q={{movie[1] }}" target="_blank" title="Find this movie on IMDb">{{ movie[1] }}</a>
+                                 </span></td>
+                                 <td>{{ movie[2] }}</td>
+                                 <td>{{ movie[3] }}</td>
+                                 <td>{{ movie[4] }}</td>
+                                 <td>{{ movie[5] }}</td>
+                                 <td>{{ movie[6] }}</td>
+                                 <td><span class="float-right">
+                                     <a class="nav-link " href="edit"><i class="fa fa-tags" aria-hidden="true"></i>编辑</a>
+<!--                                     <a class="btn" href="{{ url_for('edit',movieid=movie[0][0] ) }}">编辑</a>-->
+                                     <form	class="inline-form"	method="post"	action="{{ url_for('delete', movieid=movie[0] ) }}">
+                                        <input	class="btn"	type="submit"	name="delete"	value="删除" style="color:pink" onclick="return confirm('您是否确认删除该记录?')">
+                                        </form>
+                                 </span></td>
+                             </tr>
+                         {% endfor %}
+                     </table>
+                 </div>
+          </section>
+       </div>
+
+<!--   <img alt="Walking Totoro" class= totoro src="{{ url_for('static', filename='images/totoro.jpg') }}">-->
+   <footer>
+      <small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
+   </footer>
+
+<!--  <footer id="footer">-->
+<!--    <div class="footer-top">-->
+<!--      <div class="container">-->
+<!--        <div class="row">-->
+
+<!--          <div class="col-lg-3 col-md-6 footer-info">-->
+<!--            <h3>爬虫技术</h3>-->
+<!--            <p>-->
+<!--              xxxxxx <br>-->
+<!--              xxxxxx<br><br>-->
+<!--              <strong>电话：</strong> +182xxxxxxxx<br>-->
+<!--              <strong>邮箱：</strong> 236xxxxxxxx@qq.com<br>-->
+<!--            </p>-->
+<!--            <div class="social-links mt-3">-->
+<!--              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>-->
+<!--              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>-->
+<!--              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>-->
+<!--              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>-->
+<!--              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="col-lg-2 col-md-6 footer-links">-->
+<!--            <h4>快速了解我们</h4>-->
+<!--            <ul>-->
+<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">关于我们</a></li>-->
+<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">服务</a></li>-->
+<!--              <li><i class="bx bx-chevron-right"></i> <a href="index">首页</a></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+
+<!--          <div class="col-lg-3 col-md-6 footer-links">-->
+<!--            <h4>服务</h4>-->
+<!--            <ul>-->
+<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影top250</a></li>-->
+<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影评分</a></li>-->
+<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影短评</a></li>-->
+<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影热评</a></li>-->
+<!--              <li><i class="bx bx-chevron-right"></i> <a href="#">电影统计图</a></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+
+<!--          <div class="col-lg-4 col-md-6 footer-newsletter">-->
+<!--            <h4>关注我们</h4>-->
+<!--            <p>输入你的邮箱，带你了解更多电影信息</p>-->
+<!--            <form action="" method="post">-->
+<!--              <input type="email" name="email"><input type="submit" value="订阅">-->
+<!--            </form>-->
+
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="container">-->
+<!--      <div class="copyright">Copyright &copy;2022 xxx</div>-->
+<!--      <div class="credits"></div>-->
+<!--    </div>-->
+<!--  </footer>&lt;!&ndash; End Footer &ndash;&gt;-->
+
+
+
+<!--    <script src="static/assets/js/jquery-3.3.1.min.js"></script>-->
+<!--    <script src="static/assets/js/moment.min.js"></script>-->
+<!--    <script src="static/assets/js/Chart.min.js"></script>-->
+<!--    <script src="static/assets/js/bootstrap.min.js"></script>-->
+<!--    <script src="static/assets/js/tooplate-scripts.js"></script>-->
+    </div>
+</body>
+
+</html>

@@ -40,7 +40,7 @@
          <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
                 <a class="navbar-brand" href="#">
-                    <h1 class="tm-site-title mb-0">❥(^_-)电影管理系统 (-_^)❥</h1>
+                    <h1 class="tm-site-title mb-0">电影管理系统</h1>
                 </a>
                 <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,12 @@
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
                             <a class="nav-link " href="index">
+                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                首页
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="mv">
                                 <i class="fa fa-tags" aria-hidden="true"></i>
                                 电影信息
                             </a>
@@ -64,7 +70,7 @@
                         <li class="nav-item">
                             <a class="nav-link " href="tj">
                                 <i class="fa fa-film" aria-hidden="true"></i>
-                                统计
+                                票房分析
                             </a>
                         </li>
                     </ul>
@@ -80,6 +86,18 @@
                     <h3 class="section-title">演员信息</h3>
                 </div>
             </div>
+
+            <p>{{ actor_info|length }} 条记录</p>
+            <form method="post">
+                <div class="inputText">
+                    序号 <input type="text" name="actor_id" autocomplete="off"  required>
+                    姓名 <input type="text" name="actor_name" autocomplete="off"  required>
+                    性别 <input type="text" name="gender" autocomplete="off" required><br>
+                    国家 <input type="text" name="acountry" autocomplete="off"  required>
+                    <input class="btn" type="submit" name="submit" value="添加">
+                </div>
+            </form>
+
           <section class="counts section-bg">
                  <div class="container">
                      <table class="table table-striped">
@@ -88,13 +106,22 @@
                              <td style="width: 10%;">姓名</td>
                              <td style="width: 10%;">性别</td>
                              <td style="width: 10%;">国家</td>
+                             <td style="width: 10%;">操作</td>
                          </tr>
                          {% for actor in actor_info %}
                              <tr>
                                  <td>{{ actor[0] }}</td>
-                                 <td>{{ actor[1] }}</td>
+                                 <td><span class="float-right">
+                                 <a class="baike" href="https://baike.baidu.com/item/{{actor[1] }}" target="_blank" title="Find this actor on baike">{{ actor[1] }}</a>
+                                 </span></td>
                                  <td>{{ actor[2] }}</td>
                                  <td>{{ actor[3] }}</td>
+                                  <td><span class="float-right">
+                                       <a class="nav-link " href="edit2"><i class="fa fa-tags" aria-hidden="true"></i>编辑</a>
+                                     <form	class="inline-form"	method="post"	action="{{ url_for('delete2', actorid=actor[0]  ) }}">
+                                        <input	class="btn"	type="submit"	name="delete2"	value="删除" style="color:pink" onclick="return confirm('您是否确认删除该记录?')">
+                                        </form>
+                                 </span></td>
                              </tr>
                          {% endfor %}
                      </table>
